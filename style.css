@@ -1,0 +1,19 @@
+.grayBlock{
+  background-color: gray;
+  border-radius: 1em;
+}
+
+.contentBlock{
+  background-color: lightgray;
+  font-family: roboto;
+}
+
+.buttonBlue{
+  background-color: navy;
+  color:white;
+}
+
+.buttonGray{
+  background-color: gray;
+  color:white;
+}
