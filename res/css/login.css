@@ -9,6 +9,11 @@ header > a {
         color: black;
 }
 
+input:not([type=submit]){
+        width: 60%;
+}
+
+
 
 .grayBlock{
   background-color: gray;
