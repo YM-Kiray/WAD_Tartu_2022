@@ -1,0 +1,95 @@
+#main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.mainContent{
+    overflow: auto;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+html{
+    height: 100%;
+}
+
+header{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    margin:0.5em;
+}
+
+header > a > img{
+    width:2em;
+    height:2em;
+}
+
+footer{
+    padding: 1.5em;
+    margin:0.5em;
+}
+
+.contentBlock{
+    margin:1em;
+    padding:1em;
+    border-radius:1em
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.contentBlock > div:first-child {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contentBlock > div:first-child img{
+   height:2em;
+   width:2em;
+}
+
+.imgPost{
+    max-height: 100%;
+    max-width: 100%;
+    max-height: 450px;
+}
+
+.imgLike{
+    height: 4em;
+}
+
+*{
+    font-family: monospace;
+}
+
+#main > div:first-child , #main > div:last-child {
+    margin: 1em;
+    padding: 1.5em;
+    width: 15%;
+}
+
+
+
+
