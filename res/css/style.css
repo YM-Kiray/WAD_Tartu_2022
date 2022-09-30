@@ -1,3 +1,8 @@
+
+*{
+  font-family: monospace;
+}
+
 .grayBlock{
   background-color: gray;
   border-radius: 1em;
@@ -7,6 +12,15 @@
   background-color: lightgray;
   border-radius: 1em;
   font-family: roboto;
+  margin:1em;
+  padding:1em;
+}
+
+.loginBlock{
+  text-align: center;
+  /* width: 50%;
+  height: 30%; */
+  align-self: center;
 }
 
 .buttonBlue{
@@ -22,4 +36,201 @@
   color:white;
   border-width: 1px;
   padding:5px;
+}
+
+#main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.mainContent{
+  overflow: auto;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+body{
+  height: 100%;
+  margin: 0px;
+  display: flex;
+  flex-flow: column;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+body {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+
+}
+
+html{
+  height: 100%;
+}
+
+header{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  margin:0.5em;
+  /* padding-left:3%;
+  padding-right:3%; */
+}
+
+header {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width : 100%;
+  height: 2%;
+  margin-bottom: 70px; */
+}
+
+
+header > a > img{
+  width:2em;
+  height:2em;
+}
+
+footer{
+  padding: 1.5em;
+  margin:0.5em;
+}
+
+
+header a{
+  text-decoration: none;
+  color: black;
+}
+
+.contentBlock > div:first-child {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contentBlock > div:first-child img{
+ height:2em;
+ width:2em;
+}
+
+.imgPost{
+  max-height: 100%;
+  max-width: 100%;
+  max-height: 450px;
+}
+
+.imgLike{
+  height: 4em;
+}
+
+
+#main > div:first-child , #main > div:last-child {
+  margin: 1em;
+  padding: 1.5em;
+  width: 15%;
+}
+
+
+/* 
+a:link{
+  color:black;
+  text-decoration: none;
+} */
+
+header span:hover{
+  background-color:aliceblue;
+}
+
+/* img{
+  height: 30px;
+  width: 30px;
+} */
+
+main{
+  height: 200px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 90px;
+  align-self: center;
+}
+
+main article{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content:center;
+  align-items:center;
+  padding:10px;
+}
+
+article span{
+ align-self:flex-start;
+ margin-right: 10%;
+ text-align:right;
+ font-family:roboto;
+ width:25%;
+}
+
+#submit{
+  align-self: center;
+}
+
+.marginTop{
+  margin-top: 80px;
+}
+
+/* ///////////////////////////////////////////////// */
+
+a{
+  color: cornflowerblue;
+  text-decoration: none;
+}
+
+a:hover{
+  color: red;
+}
+
+header > a {
+  color: black;
+}
+
+input:not([type=submit]){
+  width: 60%;
+}
+
+
+.grayBlock{
+background-color: gray;
+border-radius: 1em;
+}
+
+
+
+
+
+
+.buttonBlue{
+background-color: navy;
+color:white;
+}
+
+.buttonGray{
+background-color: gray;
+color:white;
 }
