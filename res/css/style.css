@@ -174,3 +174,7 @@ main article{
   align-items:center;
   padding:10px;
 }
+
+span ~ textarea {
+  resize: none;
+}
