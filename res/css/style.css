@@ -112,14 +112,6 @@ body{
   display: flex;
   flex-flow: column;
   flex-direction: column;
-  /* justify-content: space-between; */
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  /* align-items: center;
-  justify-content: center; */
 }
 
 footer{
@@ -144,13 +136,6 @@ header a{
   color: black;
 }
 
-/*
-header > a > img{
-  width:2em;
-  height:2em;
-}
-*/
-
 header img{
   height: 30px;
   width: 30px;
@@ -159,8 +144,6 @@ header img{
 header a:hover{
   background-color:aliceblue;
 }
-
-
 
 html{
   height: 100%;
@@ -191,8 +174,3 @@ main article{
   align-items:center;
   padding:10px;
 }
-
-span ~ textarea {
-  resize: none;
-}
-
