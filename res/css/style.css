@@ -192,4 +192,7 @@ main article{
   padding:10px;
 }
 
+span ~ textarea {
+  resize: none;
+}
 
