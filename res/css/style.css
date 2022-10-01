@@ -132,7 +132,10 @@ header{
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left:10px;
+  padding-right:10px;
   margin:0.5em;
 }
 
@@ -141,12 +144,19 @@ header a{
   color: black;
 }
 
+/*
 header > a > img{
   width:2em;
   height:2em;
 }
+*/
 
-header span:hover{
+header img{
+  height: 30px;
+  width: 30px;
+}
+
+header a:hover{
   background-color:aliceblue;
 }
 

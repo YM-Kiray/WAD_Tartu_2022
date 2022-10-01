@@ -16,14 +16,16 @@ a:link{
     text-decoration: none;
 }
 
-header span:hover{
+header a:hover{
     background-color:aliceblue;
 }
 
+/*
 img{
     height: 30px;
     width: 30px;
 }
+*/
 
 main{
     height: 200px;
