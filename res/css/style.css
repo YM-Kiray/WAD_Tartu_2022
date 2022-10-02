@@ -13,7 +13,7 @@
   flex-grow: 1;
 }
 
-#main > div:first-child , #main > div:last-child {
+#main > aside:first-child , #main > aside:last-child {
   margin: 1em;
   padding: 1.5em;
   width: 15%;
@@ -153,7 +153,7 @@ input:not([type=submit]){
   width: 60%;
 }
 
-main{
+main:not(.mainContent){
   height: 200px;
   width: 200px;
   display: flex;
@@ -165,7 +165,7 @@ main{
   align-self: center;
 }
 
-main article{
+main:not(.mainContent) article{
   display: flex;
   flex-direction:row;
   flex-wrap: nowrap;
