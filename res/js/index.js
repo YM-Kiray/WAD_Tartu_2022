@@ -1,4 +1,4 @@
-fetch("http://myjson.dit.upm.es/api/bins/6w68")
+fetch("http://myjson.dit.upm.es/api/bins/gje8")
 .then((response) => (response.json()))
 .then((posts) => createPosts(posts))
 
@@ -26,22 +26,20 @@ function createPosts(posts){
         let div = document.createElement("div")
         let img = document.createElement("img")
         img.src = "res/images/me.png"
-        let dateStr = document.createTextNode("" + month[date.getMonth() - 1] + date.getDate() + ", " + date.getFullYear())
+        let dateStr = document.createTextNode("" + month[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear())
         let contentImg = document.createElement("img")
-        contentImg.src = "/res/images/postImg/" + element.imgID
+        contentImg.src = "res/images/postImg/" + element.imgID
         contentImg.classList.add("imgPost")
         contentImg.alt = element.imgAlt
-        let postText = document.createTextNode(element.postText)
+        let postText = document.createElement("p")
+        postText.innerText = element.postText
         let buttonImg = document.createElement("img")
         buttonImg.src = "res/images/sealOfApproval.jpg"
         buttonImg.classList.add("imgLike")
 
-        div.appendChild(img)
-        div.appendChild(dateStr)
-        article.appendChild(div)
-        article.appendChild(contentImg)
-        article.appendChild(postText)
-        article.appendChild(buttonImg)
+
+        div.append(img, dateStr)
+        article.append(div,contentImg,postText,buttonImg)
    
         mainContent.appendChild(article)
     });
