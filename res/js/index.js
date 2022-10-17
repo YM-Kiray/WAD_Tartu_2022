@@ -1,4 +1,5 @@
-fetch("http://myjson.dit.upm.es/api/bins/gje8")
+//fetch("http://myjson.dit.upm.es/api/bins/gje8")
+fetch("../res/json/json_data.json")
 .then((response) => (response.json()))
 .then((posts) => createPosts(posts))
 
@@ -6,18 +7,6 @@ function createPosts(posts){
     var mainContent = document.getElementById("mainContent")
     posts = posts.posts
     posts.forEach(element => {
-        console.log(element)
-/* 
-        <article class="contentBlock">
-        <div>
-            <img src="res/images/me.png"/>
-            <p>Oct 22, 2022</p>
-        </div>
-        <img class="imgPost" src="res/images/post.jpg"/>
-        <p>Anyone knows in which room is the lab today?</p>            
-        <img class="imgLike" src="res/images/sealOfApproval.jpg"/>
-    
-    </article> */
 
         let month = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let date = new Date(element.createTime)
