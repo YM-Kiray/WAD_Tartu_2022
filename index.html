@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="res/css/style.css">
+    
     <!-- <link rel="stylesheet" href="styleIndex.css"> -->
 <title>Home</title>
 </head>
@@ -11,12 +12,19 @@
 <body>
     <header class="grayBlock">
         <h2>Home | <a href="addPost.html">addPost</a></h2>
-        <a href="login.html">
-            <img src="res/images/me.png"/>
-        </a>
+        <!-- <a href="login.html"> -->
+            <img id="profile-pic" src="res/images/me.png"/>
+            <script type="text/javascript" src="res/js/event.js"></script>
+        <!-- </a>-->
         <script src="res/js/index.js"></script>
 
     </header>
+
+    <div class="dropdown hide">
+        <p>John Doe</p>
+        <p>john.doe@ut.ee</p>
+        <p>logout</p>
+    </div>
 
     <div id="main">
         <aside class="grayBlock" >

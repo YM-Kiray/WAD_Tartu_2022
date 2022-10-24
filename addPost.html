@@ -10,10 +10,17 @@
     <body>
         <header class="grayBlock">
             <h2><a href="index.html">Home</a></h2>
-            <a href="login.html">
-                <img src="res/images/me.png" alt="Profile picture"> 
-            </a>
+            <!-- <a href="login.html"> -->
+                <img id="profile-pic" src="res/images/me.png" alt="Profile picture"> 
+            <!-- </a> -->
+
+            <script src="res/js/event.js"></script>
         </header>
+        <div class="dropdown hide">
+            <p>John Doe</p>
+            <p>john.doe@ut.ee</p>
+            <p>logout</p>
+        </div>
         <main class="contentBlock marginTop">
             <article id="post">
                 <span>Post body</span>
