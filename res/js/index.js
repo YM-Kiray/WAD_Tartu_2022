@@ -1,5 +1,5 @@
 //fetch("http://myjson.dit.upm.es/api/bins/gje8")
-fetch("../json/json_data.json")
+fetch("res/json/json_data.json")
 .then((response) => (response.json()))
 .then((posts) => createPosts(posts))
 
