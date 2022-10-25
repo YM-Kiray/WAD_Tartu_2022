@@ -103,6 +103,15 @@
   height: 100%;
 }
 
+.mainContent article div{
+  display:flex;
+  justify-content:center;
+}
+
+.mainContent article div img{
+  height:250px;
+}
+
 .marginTop{
   margin-top: 80px;
 }

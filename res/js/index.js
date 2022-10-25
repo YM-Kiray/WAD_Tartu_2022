@@ -28,10 +28,17 @@ function createPosts(posts){
         buttonImg.src = "res/images/sealOfApproval.jpg"
         buttonImg.classList.add("imgLike")
 
+        let div2 = document.createElement("div")
+        div2.append(contentImg)
 
         div.append(img, authorText, dateStr)
-        article.append(div,contentImg,postText,buttonImg)
-   
+        if(element.imgID !== ""){
+            article.append(div,div2,postText,buttonImg)
+        }
+        else{
+            article.append(div,postText,buttonImg)
+        }
+        
         mainContent.appendChild(article)
     });
 }
