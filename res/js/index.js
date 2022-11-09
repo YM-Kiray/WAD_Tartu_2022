@@ -24,7 +24,7 @@ function createPosts(posts){
         contentImg.alt = element.imgAlt
         let postText = document.createElement("p")
         postText.innerText = element.postText
-        let buttonImg = document.createElement("img")
+        let buttonImg = document.createElement("img")   
         buttonImg.src = "res/images/sealOfApproval.jpg"
         buttonImg.classList.add("imgLike")
 
