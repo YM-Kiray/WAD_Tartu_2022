@@ -18,6 +18,7 @@ function createPosts(posts){
         let img = document.createElement("img")
         img.src = "res/images/me.png"
         let dateStr = document.createTextNode("" + month[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear())
+        
         let contentImg = document.createElement("img")
         contentImg.src = "res/images/postImg/" + element.imgID
         contentImg.classList.add("imgPost")
