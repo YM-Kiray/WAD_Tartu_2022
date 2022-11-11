@@ -2,14 +2,14 @@
 
     <article class="contentBlock">
         <div>
-            <img :src="require('@/assets/images/' + authorImg)">
+            <!--<img :src="require('@/assets/images/' + authorImg)">-->
             <span>{{ author }}</span>
-            {{ formatDate(date) }}
+            {{ formatDate(createTime) }}
         </div>
         <div>
-            <img v-if = "imgSrc !== ''" :src="require('@/assets/images/' + imgSrc)" class="imgPost" :alt="imgAltText">
+            <img v-if = "imgID !== ''" :src="require('@/assets/images/postImg/' + imgID)" class="imgPost" :alt="imgAlt">
         </div>  
-        <p>{{ message }}</p>
+        <p>{{ postText }}</p>
         <img :src=image class="imgLike">
     </article>
 
@@ -22,12 +22,11 @@ import image from "../assets/images/sealOfApproval.jpg"
 export default { 
     name:"MessageCompo",
     props: {
-        date: Number, 
-        imgSrc: String, 
-        message: String, 
+        createTime: Number, 
+        imgID: String, 
+        postText: String, 
         author: String, 
-        authorImg: String, 
-        imgAltText: String
+        imgAlt: String
     },
     data: function(){
         return {
@@ -36,8 +35,9 @@ export default {
     },
     methods:{
         formatDate() {
-            let date = new Date(this.date)
-            return (date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear())
+            console.log(this.$store)
+            let createTime = new Date(this.createTime)
+            return (createTime.getMonth() + "/" + createTime.getDate() + "/" + createTime.getFullYear())
         }
     }
 

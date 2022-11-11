@@ -1,16 +1,16 @@
 <template>
-  <MessageCompo v-for="item in items"
+  <MessageCompo v-for="item in postList"
     :key="item.id" 
-    :date="item.date" 
-    :imgSrc="item.imgSrc" 
-    :message="item.message"
+    :createTime="item.createTime" 
+    :imgID="item.imgID" 
+    :postText="item.postText"
     :author="item.author"
-    :authorImg="item.authorImg"
-    :imgAltText="item.imgAltText"/>
+    :imgAlt="item.imgAlt"/>
 </template>
 
 <script>
 import MessageCompo from './components/Message.vue'
+
 
 export default {
   name: 'App',
@@ -21,29 +21,30 @@ export default {
     return {
       items: [
         {id:1,
-        date:1234567890123,
-        imgSrc:"sealOfApproval.jpg",
-        message:"Hello World",
+        createTime:1234567890123,
+        imgID:"sealOfApproval.jpg",
+        postText:"Hello World",
         author:"Mr Happy",
-        authorImg:"sealOfApproval.jpg",
-        imgAltText:"Gdsdfs"},
+        imgAlt:"Gdsdfs"},
         {id:1,
-        date:2234567890123,
-        imgSrc:"sealOfApproval.jpg",
-        message:"Hello World",
+        createTime:1234567890123,
+        imgID:"sealOfApproval.jpg",
+        postText:"Hello World",
         author:"Mr Happy",
-        authorImg:"sealOfApproval.jpg",
-        imgAltText:"Gdsdfs"},
+        imgAlt:"Gdsdfs"},
         {id:1,
-        date:1134567890123,
-        imgSrc:"sealOfApproval.jpg",
-        message:"Hello World",
+        createTime:1234567890123,
+        imgID:"sealOfApproval.jpg",
+        postText:"Hello World",
         author:"Mr Happy",
-        authorImg:"postImg/Mr_Bump.jpg",
-        imgAltText:"Gdsdfs"},
-      
+        imgAlt:"Gdsdfs"}
       ]
     }
+  },
+  computed: {
+      postList(){
+          return this.$store.getters.getPostList
+      }
   }
 }
 </script>
