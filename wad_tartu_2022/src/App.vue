@@ -1,15 +1,20 @@
 <template>
   <MessageCompo v-for="item in postList"
-    :key="item.id" 
+    :key="item.id"
+    :id="item.id" 
+    :likes="item.likes"
     :createTime="item.createTime" 
     :imgID="item.imgID" 
     :postText="item.postText"
     :author="item.author"
     :imgAlt="item.imgAlt"/>
+
+  <button v-on:click="resetLikes">Reset Likes</button>
 </template>
 
 <script>
 import MessageCompo from './components/Message.vue'
+import store from './store'
 
 
 export default {
@@ -45,6 +50,11 @@ export default {
       postList(){
           return this.$store.getters.getPostList
       }
+  },
+  methods: {
+    resetLikes(){
+      store.commit("resetLikes")
+    }
   }
 }
 </script>

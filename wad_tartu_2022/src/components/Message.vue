@@ -10,18 +10,24 @@
             <img v-if = "imgID !== ''" :src="require('@/assets/images/postImg/' + imgID)" class="imgPost" :alt="imgAlt">
         </div>  
         <p>{{ postText }}</p>
-        <img :src=image class="imgLike">
+        <div class="likeBlock">
+            <p>{{likes + " Likes"}}</p>
+            <img :src=image class="imgLike" v-on:click="like">
+        </div>
     </article>
 
 
 </template>
 <script>
 
+import store from "@/store"
 import image from "../assets/images/sealOfApproval.jpg"
 
 export default { 
     name:"MessageCompo",
     props: {
+        id: Number,
+        likes: Number,
         createTime: Number, 
         imgID: String, 
         postText: String, 
@@ -35,9 +41,11 @@ export default {
     },
     methods:{
         formatDate() {
-            console.log(this.$store)
             let createTime = new Date(this.createTime)
             return (createTime.getMonth() + "/" + createTime.getDate() + "/" + createTime.getFullYear())
+        },
+        like() {
+            store.commit('like', {postId: this.id})
         }
     }
 
@@ -75,6 +83,12 @@ export default {
   max-height: 100%;
   max-width: 100%;
   max-height: 450px;
+}
+
+.likeBlock{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
 }
 
 </style>
