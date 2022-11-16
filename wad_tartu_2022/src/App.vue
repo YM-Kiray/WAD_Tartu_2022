@@ -20,7 +20,7 @@ import store from './store'
 export default {
   name: 'App',
   components: {
-    MessageCompo,
+    MessageCompo
   },
   data: function(){
     return {
