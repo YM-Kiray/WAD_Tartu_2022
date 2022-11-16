@@ -1,4 +1,5 @@
 <template>
+
   <MessageCompo v-for="item in postList"
     :key="item.id"
     :id="item.id" 
@@ -16,11 +17,10 @@
 import MessageCompo from './components/Message.vue'
 import store from './store'
 
-
 export default {
   name: 'App',
   components: {
-    MessageCompo
+    MessageCompo,
   },
   data: function(){
     return {
