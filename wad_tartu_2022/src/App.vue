@@ -1,5 +1,6 @@
 <template>
-
+  <div>
+  <HeaderCompo/>
   <MessageCompo v-for="item in postList"
     :key="item.id"
     :id="item.id" 
@@ -11,16 +12,23 @@
     :imgAlt="item.imgAlt"/>
 
   <button v-on:click="resetLikes">Reset Likes</button>
+  <FooterCompo/>
+  </div>
+
 </template>
 
 <script>
+import HeaderCompo from './components/Header.vue'
 import MessageCompo from './components/Message.vue'
+import FooterCompo from './components/Footer.vue'
 import store from './store'
 
 export default {
   name: 'App',
   components: {
-    MessageCompo
+    MessageCompo, 
+    HeaderCompo,
+    FooterCompo
   },
   data: function(){
     return {

@@ -1,9 +1,9 @@
 <template> 
-    <div>
+    <div class="contentBlock">
         <p>Header Component</p>
         <nav>
-            <router-link to="/Main">Main</router-link> |
-            <router-link to="/Signup">SignUp</router-link> |
+            <router-link to="/Main" active>Main</router-link> |
+            <router-link to="/Signup" active>SignUp</router-link> 
         </nav>
     </div>
 </template> 
@@ -13,3 +13,11 @@ export default {
   name: 'HeaderCompo',
 }
 </script>
+
+<style scoped>
+p { 
+    font-size: 30px;
+    }
+</style>
+
+
