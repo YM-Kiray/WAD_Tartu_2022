@@ -1,32 +1,45 @@
 <template>
-    <div id="main">
-        <form v-on:submit.prevent = "validate">
-            <div class="atts">
-                <div class="attribute">
-                    <label for="email">Email</label>
-                    <input type="text" id="email" placeholder="Email" required v-model="email"/>
+    <div class="signup">
+
+        <HeaderCompo/>
+
+        <div id="main">
+            <form v-on:submit.prevent = "validate">
+                <div class="atts">
+                    <div class="attribute">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" placeholder="Email" required v-model="email"/>
+                    </div>
+                    <div class="attribute">
+                        <label for="password">Password</label>
+                        <input type="text" id="password" placeholder="Password" required v-model="password"/>
+                    </div>
                 </div>
-                <div class="attribute">
-                    <label for="password">Password</label>
-                    <input type="text" id="password" placeholder="Password" required v-model="password"/>
+                <div v-if="error" class="error">
+                    {{error}}
                 </div>
-            </div>
-            <div v-if="error" class="error">
-                {{error}}
-            </div>
-            <div class="submit">
-                <button>Signup </button>
-            </div>
-        </form>
+                <div class="submit">
+                    <button>Signup </button>
+                </div>
+            </form>
+        </div>
+
+        <FooterCompo/>
+
     </div>
 </template>
 
 
 <script>
-// import { defineComponent } from '@vue/composition-api'
+import HeaderCompo from './../components/Header.vue'
+import FooterCompo from './../components/Footer.vue'
 
 export default {
     name:"SignupPage",
+    components:{
+        HeaderCompo,
+        FooterCompo
+    },
     props:{},
     data:()=>{
         return{

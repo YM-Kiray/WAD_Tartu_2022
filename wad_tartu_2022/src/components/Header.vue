@@ -2,8 +2,8 @@
     <div class="contentBlock">
         <p>Header Component</p>
         <nav>
-            <router-link to="/Main" active>Main</router-link> |
-            <router-link to="/Signup" active>SignUp</router-link> 
+            <router-link to="/">Main</router-link> |
+            <router-link to="/signup">SignUp</router-link> 
         </nav>
     </div>
 </template> 

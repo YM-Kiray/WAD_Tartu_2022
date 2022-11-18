@@ -14,7 +14,6 @@
   <button v-on:click="resetLikes">Reset Likes</button>
   <FooterCompo/>
   </div>
-
 </template>
 
 <script>
@@ -22,6 +21,7 @@ import HeaderCompo from './components/Header.vue'
 import MessageCompo from './components/Message.vue'
 import FooterCompo from './components/Footer.vue'
 import store from './store'
+// import SignupPage from './views/Signup.vue'
 
 export default {
   name: 'App',
