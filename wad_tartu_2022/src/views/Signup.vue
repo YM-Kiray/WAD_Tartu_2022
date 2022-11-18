@@ -1,31 +1,29 @@
 <template>
-    <div class="signup">
-
+    <div>
         <HeaderCompo/>
-
-        <div id="main">
-            <form v-on:submit.prevent = "validate">
-                <div class="atts">
-                    <div class="attribute">
-                        <label for="email">Email</label>
-                        <input type="text" id="email" placeholder="Email" required v-model="email"/>
+        <div class="signup">
+            <div id="main">
+                <form v-on:submit.prevent = "validate">
+                    <div class="atts">
+                        <div class="attribute">
+                            <label for="email">Email</label>
+                            <input type="text" id="email" placeholder="Email" required v-model="email"/>
+                        </div>
+                        <div class="attribute">
+                            <label for="password">Password</label>
+                            <input type="text" id="password" placeholder="Password" required v-model="password"/>
+                        </div>
                     </div>
-                    <div class="attribute">
-                        <label for="password">Password</label>
-                        <input type="text" id="password" placeholder="Password" required v-model="password"/>
+                    <div v-if="error" class="error">
+                        {{error}}
                     </div>
-                </div>
-                <div v-if="error" class="error">
-                    {{error}}
-                </div>
-                <div class="submit">
-                    <button>Signup </button>
-                </div>
-            </form>
+                    <div class="submit">
+                        <button>Signup </button>
+                    </div>
+                </form>
+            </div>
         </div>
-
         <FooterCompo/>
-
     </div>
 </template>
 
@@ -83,6 +81,9 @@ export default {
 <style scoped>
     *{
         display:flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
     }
 
     label{
@@ -148,5 +149,6 @@ export default {
         align-items:center;
         background-color: darkgray;
     }
+  
 </style>
 

@@ -1,6 +1,6 @@
 <template> 
-    <div class="contentBlock">
-        <p>Header Component</p>
+    <div class="header">
+        <h1>Header Component</h1>
         <router-view>
         <nav>
             <router-link to="/">Main</router-link> |
@@ -17,7 +17,16 @@ export default {
 </script>
 
 <style scoped>
-p { 
+.header{
+    position: sticky;
+    background-color: lightgray;
+    text-align: center;
+    border-radius: 1em;
+    font-family: roboto;
+    margin:1em;
+    padding:1em;
+ }
+h1 { 
     font-size: 30px;
     }
 </style>
