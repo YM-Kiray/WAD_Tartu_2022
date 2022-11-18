@@ -1,13 +1,19 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import SignupPage from "../views/Signup.vue";
-// import MainView from "../views/FormView.vue";
+import MainPage from "../views/Main.vue";
 
 
 const routes = [{
         path: "/signup",
         name: "signup",
         component: SignupPage
+    }, 
+    {
+        path: "/",
+        name: "MainPage", 
+        component: MainPage
     }
+    //, path:"/main", name_ "main", component: HomePage
 ];
 
 const router = createRouter({
