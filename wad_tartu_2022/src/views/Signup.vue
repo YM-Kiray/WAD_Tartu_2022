@@ -102,6 +102,8 @@ export default {
     .attribute{
         justify-content:right;
         /* background-color: lightyellow; */
+        flex-direction: row;
+        align-items: center;
     }
 
     .error{
@@ -123,7 +125,7 @@ export default {
     button{
         border: 0px solid;
         border-radius: 8px;
-        background-color: rgb(164, 164, 164);
+        background-color: rgb(139, 180, 221);
         padding: 4px 15px;
         font-size:14px;
     }
@@ -138,7 +140,7 @@ export default {
         /* width: 40%; */
         align-items: center;
         padding: 20px 30px;
-        background-color:lightgray;
+        background-color:rgb(221, 236, 215);
         margin: 30px 0px;
         border-radius: 15px;
         width:300px;
@@ -147,7 +149,8 @@ export default {
     #main{
         justify-content: center;
         align-items:center;
-        background-color: darkgray;
+        background-color: rgb(198, 198, 198);
+        border-radius: 1em;
     }
   
 </style>

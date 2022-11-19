@@ -19,11 +19,11 @@ export default {
 <style scoped>
 .header{
     position: sticky;
-    background-color: lightgray;
+    background-color: rgb(198, 198, 198);
     text-align: center;
     border-radius: 1em;
     font-family: roboto;
-    margin:1em;
+    margin:1em 0em;
     padding:1em;
  }
 h1 { 

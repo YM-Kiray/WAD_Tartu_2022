@@ -1,7 +1,7 @@
 <template> 
     <div class="footer">
         <h1>Footer Component</h1>
-        <div class="text-center p-3" style="background-color: lightgrey">
+        <div class="text-center p-3">
         © 2020 Copyright:
         <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a> 
     </div>
@@ -18,11 +18,11 @@ export default {
 
   .footer{
     position: sticky;
-    background-color: lightgray;
+    background-color: rgb(198, 198, 198);
     text-align: center;
     border-radius: 1em;
     font-family: roboto;
-    margin:1em;
+    margin:1em 0em;
     padding:1em;
  }
  h1 { 
