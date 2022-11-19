@@ -3,6 +3,7 @@
     <article class="contentBlock">
         <div>
             <!--<img :src="require('@/assets/images/' + authorImg)">-->
+            <img id="profile-pic" src="../assets/images/me.png"/>
             <span>{{ author }}</span>
             {{ formatDate(createTime) }}
         </div>
