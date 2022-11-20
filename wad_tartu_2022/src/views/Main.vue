@@ -87,7 +87,7 @@ export default {
 }
 
 .grayBlock{
-  background-color: lightgrey;
+  background-color: rgb(198, 198, 198);
   border-radius: 1em;
 }
 
@@ -102,7 +102,7 @@ export default {
 }
 
 #main > aside:first-child , #main > aside:last-child {
-  margin: 1em;
+  
   padding: 1.5em;
   width: 15%;
 }
