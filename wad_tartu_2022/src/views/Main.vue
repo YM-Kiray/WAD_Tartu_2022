@@ -3,6 +3,7 @@
         <div id = "main">
           <aside class="grayBlock"/>
           <main>
+            <button class = "button" v-on:click="logout">Logout</button>
             <MessageCompo v-for="item in postList"
                 :key="item.id"
                 :id="item.id" 
@@ -13,6 +14,8 @@
                 :author="item.author"
                 :imgAlt="item.imgAlt"/>
 
+            <button class = "button" v-on:click="addPost">Add Post</button>
+            <button class = "button" v-on:click="deleteAll">Delete All</button>
             <button class = "button" v-on:click="resetLikes">Reset Likes</button>
           </main>
           <aside class="grayBlock"/>
@@ -26,6 +29,7 @@
 <script>
 import MessageCompo from './../components/Message.vue'
 import store from './../store'
+import router from '@/router'
 
 
 export default {
@@ -65,6 +69,15 @@ export default {
   methods: {
     resetLikes(){
       store.commit("resetLikes")
+    },
+    deleteAll(){
+      store.commit("deleteAll")
+    },
+    addPost(){
+      router.push("/addPost")
+    },
+    logout(){
+      store.commit("logout")
     }
   }
 }
