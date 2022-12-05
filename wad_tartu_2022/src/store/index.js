@@ -33,8 +33,7 @@ export default createStore({
            }
     },
     mutations: {
-        like: (state, {postId}) => {
-            console.log(postId)
+        like: (state, postId) => {
             state.postList.forEach(post => {
                 if(post.id == postId){
                     post.likes += 1
@@ -47,7 +46,14 @@ export default createStore({
                 post.likes = 0
             })
         }
-
+    },
+    actions: {
+        like: (act, {postId}) => {
+            act.commit("like", postId)
+        },
+        resetLikes: act => {
+            act.commit("resetLikes")
+        }
     },
 
 })

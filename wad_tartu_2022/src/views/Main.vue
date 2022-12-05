@@ -68,16 +68,16 @@ export default {
   },
   methods: {
     resetLikes(){
-      store.commit("resetLikes")
+      store.dispatch("resetLikes")
     },
     deleteAll(){
-      store.commit("deleteAll")
+      store.dispatch("deleteAll")
     },
     addPost(){
       router.push("/addPost")
     },
     logout(){
-      store.commit("logout")
+      store.dispatch("logout")
     }
   }
 }

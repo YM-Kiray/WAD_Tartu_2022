@@ -46,7 +46,7 @@ export default {
             return (createTime.getMonth() + "/" + createTime.getDate() + "/" + createTime.getFullYear())
         },
         like() {
-            store.commit('like', {postId: this.id})
+            store.dispatch('like', {postId: this.id})
         }
     }
 
