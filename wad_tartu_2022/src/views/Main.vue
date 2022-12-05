@@ -1,6 +1,5 @@
 <template>
     <div>
-        <HeaderCompo/>
         <div id = "main">
           <aside class="grayBlock"/>
           <main>
@@ -18,7 +17,6 @@
           </main>
           <aside class="grayBlock"/>
         </div>
-        <FooterCompo/>
     </div>
 </template>
 
@@ -26,18 +24,14 @@
 
 
 <script>
-import HeaderCompo from './../components/Header.vue'
 import MessageCompo from './../components/Message.vue'
-import FooterCompo from './../components/Footer.vue'
 import store from './../store'
 
 
 export default {
   name: 'MainPage',
   components: {
-    MessageCompo, 
-    HeaderCompo,
-    FooterCompo
+    MessageCompo
   },
   data: function(){
     return {

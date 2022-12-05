@@ -1,6 +1,5 @@
 <template>
     <div>
-        <HeaderCompo/>
         <div class="signup">
             <div id="main">
                 <form v-on:submit.prevent = "validate">
@@ -23,20 +22,15 @@
                 </form>
             </div>
         </div>
-        <FooterCompo/>
     </div>
 </template>
 
 
 <script>
-import HeaderCompo from './../components/Header.vue'
-import FooterCompo from './../components/Footer.vue'
 
 export default {
     name:"SignupPage",
     components:{
-        HeaderCompo,
-        FooterCompo
     },
     props:{},
     data:()=>{
