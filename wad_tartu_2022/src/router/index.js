@@ -4,6 +4,8 @@ import MainPage from "../views/Main.vue";
 import LoginPage from "../views/Login.vue";
 import AddPost from "../views/AddPost.vue";
 import SinglePost from "../views/Post.vue";
+import auth from "../auth";
+
 
 
 const routes = [{
@@ -20,7 +22,15 @@ const routes = [{
     {
         path: "/",
         name: "MainPage", 
-        component: MainPage
+        component: MainPage,
+        beforeEnter: async(to, from, next) => {
+            let authResult = await auth.authenticated();
+            if (!authResult) {
+                next('/login')
+            } else {
+                next();
+            }
+        }
     },
     {
         path: "/addPost",
@@ -40,5 +50,7 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes,
 });
+
+
 
 export default router;

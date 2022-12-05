@@ -19,7 +19,7 @@
                     <div class="submit">
                         <button>Login</button>
                         <p> Or </p> 
-                        <router-link to="/signup"><button>Signup</button></router-link>
+                        <button @click='this.$router.push("/signup")'>Signup</button>
                     </div>
                 </form>
             </div>
@@ -29,6 +29,8 @@
 
 
 <script>
+
+
 
 export default {
     name:"LoginPage",
@@ -42,7 +44,35 @@ export default {
             error:""
         }
     },
+
+    
+
     methods:{
+        LogIn() {
+      var data = {
+        email: this.email,
+        password: this.password
+      };
+      // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
+      fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+          credentials: 'include', //  Don't forget to specify this if you need cookies
+          body: JSON.stringify(data),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+      console.log(data);
+      //this.$router.push("/");
+      location.assign("/");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("error");
+      });
+    },
         validate(){
             let regex1 = /[A-Z]/
             let regex21 = /[A-Z]+/
