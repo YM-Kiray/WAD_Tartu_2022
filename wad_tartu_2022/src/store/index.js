@@ -45,6 +45,9 @@ export default createStore({
             state.postList.forEach(post => {
                 post.likes = 0
             })
+        },
+        deleteAll: state => {
+            state.postList = []
         }
     },
     actions: {
@@ -53,6 +56,9 @@ export default createStore({
         },
         resetLikes: act => {
             act.commit("resetLikes")
+        },
+        deleteAll: act => {
+            act.commit("deleteAll")
         }
     },
 
