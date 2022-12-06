@@ -17,7 +17,7 @@
                         {{error}}
                     </div>
                     <div class="submit">
-                        <button>Login</button>
+                        <button @click="LogIn">Login</button>
                         <p> Or </p> 
                         <button @click='this.$router.push("/signup")'>Signup</button>
                     </div>
