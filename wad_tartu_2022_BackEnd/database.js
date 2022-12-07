@@ -8,7 +8,6 @@ const pool = new Pool({
 });
 
 const execute = async(query) => {
-    console.log("Hallo")
     try {
         await pool.connect(); // gets connection
         await pool.query(query); // sends queries
@@ -30,7 +29,7 @@ const createTblQuery = `
         "password" VARCHAR(200) NOT NULL,
         "createTime"  timestamp default current_timestamp
     );
-    
+
     CREATE TABLE IF NOT EXISTS "posttable" (
 	    "id" SERIAL PRIMARY KEY,         
 	    "likes" VARCHAR(200) NOT NULL,
