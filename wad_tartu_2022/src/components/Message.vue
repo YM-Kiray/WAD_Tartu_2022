@@ -7,9 +7,9 @@
             <span>{{ author }}</span>
             {{ formatDate(createTime) }}
         </div>
-        <div>
+        <!--<div>
             <img v-if = "imgID !== ''" :src="require('@/assets/images/postImg/' + imgID)" class="imgPost" :alt="imgAlt">
-        </div>  
+        </div>-->  
         <p>{{ postText }}</p>
         <div class="likeBlock">
             <p>{{likes + " Likes"}}</p>
