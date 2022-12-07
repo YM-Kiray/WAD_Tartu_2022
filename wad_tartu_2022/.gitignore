@@ -1,7 +1,6 @@
 .DS_Store
 node_modules
 /dist
-/wad_tartu_2022_BackEnd/node_modules
 
 
 # local env files
