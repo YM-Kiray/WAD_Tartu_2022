@@ -6,10 +6,8 @@
                     <div>
                         <h1>Contact Us</h1>
                         <div class="contacts">
-                            <ul>
-                            <li>Email:  help@testemail.com</li>
-                            <li>Phone: 00 49 1234567890 </li>
-                            </ul>
+                            <p>Email:  help@testemail.com <br>
+                            Phone: 00 49 1234567890 </p>
                         </div>
                     </div>
                 </div>
@@ -68,6 +66,8 @@
 
     .contacts{
         text-align: center;
+        /*background-color: darkblue;*/
+
     }
 
 
