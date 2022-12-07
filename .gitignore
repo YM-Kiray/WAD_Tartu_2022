@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 .DS_Store
 node_modules
 /dist
-<<<<<<<< HEAD:.gitignore
 wad_tartu_2022_BackEnd/node_modules
-========
->>>>>>>> 852f9db8f1239cca79e141c3303f7ed1e5cf37eb:wad_tartu_2022/.gitignore
 
 
 # local env files
@@ -26,6 +22,3 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-=======
-wad_tartu_2022_BackEnd/node_modules/
->>>>>>> 852f9db8f1239cca79e141c3303f7ed1e5cf37eb

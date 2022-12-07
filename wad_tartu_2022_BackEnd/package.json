@@ -9,11 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-<<<<<<< HEAD
-=======
     "express": "^4.18.2",
->>>>>>> 852f9db8f1239cca79e141c3303f7ed1e5cf37eb
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.8.0"
   }
 }
