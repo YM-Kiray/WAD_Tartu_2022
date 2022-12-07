@@ -1,7 +1,9 @@
 <template>
+  <div>
   <HeaderCompo/>
   <router-view/>
   <FooterCompo/>
+  </div>
 </template>
 
 <script>
