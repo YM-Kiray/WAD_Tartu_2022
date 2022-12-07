@@ -16,6 +16,32 @@ const generateJWT = (id) => {
 
 const app = express();
 
+function validate(password){
+    let regex1 = /[A-Z]/
+    let regex21 = /[A-Z]+/
+    let regex22 = /[a-z]{2,}/
+    let regex23 = /[0-9]+/
+    let regex24 = /_+/
+    if(password.length < 8 || password.length > 15){
+        return false;
+    }                
+    else if(password.match(regex1)==null || password.match(regex1).index != 0){
+        return false;
+    }
+    else if(!(regex21.test(password) && regex22.test(password) && regex23.test(password) && regex24.test(password))){
+        return false;
+    }
+    else{
+        return true;
+    }  
+}
+
+function validateEmail(email) {
+    const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return res.test(String(email).toLowerCase());
+}
+
+
 app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 // We need to include "credentials: true" to allow cookies to be represented  
 // Also "credentials: 'include'" need to be added in Fetch API in the Vue.js App
@@ -125,16 +151,16 @@ app.get('/auth/authenticate', async(req, res) => {
                 if (err) { // not verified, redirect to login page
                     console.log(err.message);
                     console.log('token is not verified');
-                    res.send({ "authenticated": authenticated }); // authenticated = false
+                    res.json({ "authenticated": authenticated }); // authenticated = false
                 } else { // token exists and it is verified 
                     console.log('author is authinticated');
                     authenticated = true;
-                    res.send({ "authenticated": authenticated }); // authenticated = true
+                    res.json({ "authenticated": authenticated }); // authenticated = true
                 }
             })
         } else { //applies when the token does not exist
             console.log('author is not authinticated');
-            res.send({ "authenticated": authenticated }); // authenticated = false
+            res.json({ "authenticated": authenticated }); // authenticated = false
         }
     } catch (err) {
         console.error(err.message);
@@ -146,15 +172,21 @@ app.get('/auth/authenticate', async(req, res) => {
 app.post('/auth/signup', async(req, res) => {
     try {
         console.log("a signup request has arrived");
-        //console.log(req.body);
         const { email, password } = req.body;
+        
+        if(!validate(password) || email.length == 0){
+            return res.status(401).json({error: "Password or email not valid"});
+        }
+
+        const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+        if (user.rows.length !== 0) return res.status(401).json({ error: "Email already registered" });
+
 
         const salt = await bcrypt.genSalt(); //  generates the salt, i.e., a random string
         const bcryptPassword = await bcrypt.hash(password, salt) // hash the password and the salt 
         const authUser = await pool.query( // insert the user and the hashed password into the database
             "INSERT INTO users(email, password) values ($1, $2) RETURNING*", [email, bcryptPassword]
         );
-        console.log(authUser.rows[0].id);
         const token = await generateJWT(authUser.rows[0].id); // generates a JWT by taking the user id as an input (payload)
         //console.log(token);
         //res.cookie("isAuthorized", true, { maxAge: 1000 * 60, httpOnly: true });
@@ -163,10 +195,9 @@ app.post('/auth/signup', async(req, res) => {
             .status(201)
             .cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
             .json({ user_id: authUser.rows[0].id })
-            .send;
     } catch (err) {
         console.error(err.message);
-        res.status(400).send(err.message);
+        res.status(400).json({error: err.message});
     }
 });
 
@@ -188,16 +219,19 @@ app.post('/auth/login', async(req, res) => {
         */
 
         //Checking if the password is correct
+        console.log(user)
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         //console.log("validPassword:" + validPassword);
-        if (!validPassword) return res.status(401).json({ error: "Incorrect password" });
-
-        const token = await generateJWT(user.rows[0].id);
-        res
+        if (validPassword){
+            const token = await generateJWT(user.rows[0].id);
+            res
             .status(201)
             .cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
-            .json({ user_id: user.rows[0].id })
-            .send;
+            .json({ user_id: user.rows[0].id });
+        }     
+        return res.status(401).json({ error: "Incorrect password" });
+
+        
     } catch (error) {
         res.status(401).json({ error: error.message });
     }

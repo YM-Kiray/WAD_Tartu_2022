@@ -31,7 +31,6 @@
 <script>
 
 
-
 export default {
     name:"LoginPage",
     components:{
@@ -64,9 +63,11 @@ export default {
       })
       .then((response) => response.json())
       .then((data) => {
-      console.log(data);
-      //this.$router.push("/");
-      location.assign("/");
+        console.log(data);
+        if(data.user_id != null){
+            location.assign("/")
+        }
+        this.error = data.error
       })
       .catch((e) => {
         console.log(e);

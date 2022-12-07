@@ -58,9 +58,10 @@ export default {
       })
       .then((response) => response.json())
       .then((data) => {
-      console.log(data);
-      this.$router.push("/");
-      //location.assign("/");
+      if(data.user_id != null){
+            location.assign("/")
+        }
+        this.error = data.error
       })
       .catch((e) => {
         console.log(e);
