@@ -4,6 +4,7 @@
           <aside class="grayBlock"/>
           <main>
             <button class = "button" v-on:click="Logout">Logout</button>
+
             <MessageCompo v-for="item in postList"
                 :key="item.id"
                 :id="item.id" 
@@ -14,9 +15,11 @@
                 :author="item.author"
                 :imgAlt="item.imgAlt"/>
 
-            <button class = "button" v-on:click="addPost">Add Post</button>
-            <button class = "button" v-on:click="deleteAll">Delete All</button>
-            <button class = "button" v-on:click="resetLikes">Reset Likes</button>
+            <div id="botones">
+              <button class = "button" v-on:click="addPost">Add Post</button>
+              <button class = "button" v-on:click="deleteAll">Delete All</button>
+              <button class = "button" v-on:click="resetLikes">Reset Likes</button>
+            </div>
           </main>
           <aside class="grayBlock"/>
         </div>
@@ -144,6 +147,11 @@ export default {
         background-color: rgb(120, 120, 120);
     }
 
+    #botones{
+      display:flex;
+      gap: 30px;
+      justify-content: center;
+    }
 
 </style>
 

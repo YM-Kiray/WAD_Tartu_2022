@@ -1,5 +1,5 @@
 <template>
-
+    <a class="link" href="'/posts/'+{{id}}">
     <article class="contentBlock">
         <div>
             <!--<img :src="require('@/assets/images/' + authorImg)">-->
@@ -10,14 +10,17 @@
         <!--<div>
             <img v-if = "imgID !== ''" :src="require('@/assets/images/postImg/' + imgID)" class="imgPost" :alt="imgAlt">
         </div>-->  
-        <p>{{ postText }}</p>
+        <div class="text">
+            <p>{{ postText }}</p>
+        </div>
+
         <div class="likeBlock">
-            <p>{{likes + " Likes"}}</p>
+            <p>{{likes + " likes"}}</p>
             <img :src=image class="imgLike" v-on:click="like">
         </div>
     </article>
 
-
+</a>
 </template>
 <script>
 
@@ -80,6 +83,15 @@ export default {
   height: 4em;
 }
 
+.link{
+    text-decoration:none;
+    color:black;
+}
+
+.link:hover{
+    text-decoration:underline;
+}
+
 .imgPost{
   max-height: 100%;
   max-width: 100%;
@@ -90,6 +102,15 @@ export default {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    align-items: center;
+}
+
+.text{
+    display: flex;
+    padding: 0px 10px;
+    margin: 0px 0px 5px 0px;
+    justify-content:flex-start;
+    text-align:left;
 }
 
 </style>

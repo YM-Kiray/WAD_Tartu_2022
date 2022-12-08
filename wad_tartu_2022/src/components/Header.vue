@@ -5,8 +5,7 @@
         <nav>
             <router-link to="/">Main</router-link> |
             <router-link to="/login">Login Page</router-link> |
-            <router-link to="/contactUs">Contact Us</router-link> |
-            <router-link to="/post">A post</router-link>
+            <router-link to="/contactUs">Contact Us</router-link>
         </nav>
         </router-view>
     </div>
