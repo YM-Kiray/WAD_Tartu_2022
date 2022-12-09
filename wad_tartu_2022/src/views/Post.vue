@@ -36,9 +36,32 @@ export default {
     props:{},
     data:()=>{
         return{
-            body:""
+            id:"",
+            body:"",
+            date:""
         }
     },
+
+    methods: {
+    fetchAPost(id) {
+      // fetch one post with the specied id (id)
+      fetch(`http://localhost:3000/posts/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+            this.post.id = data.id;
+            this.body = data.postText;
+            this.date = data.createTime}
+        )
+        .catch((err) => console.log(err.message));
+    },
+},
+    mounted() {
+    // call fetchAPost() when this element mounts, and pass to it a route parameter  (id)
+    // Route parameters (this.$route.params.id) are named URL segments that are used to capture the values specified at their 
+    // position in the URL. The captured values are populated in the req.params object, with the name 
+    // of the route parameter specified in the path as their respective keys
+    this.fetchAPost(this.$route.params.id);
+  },
 }
 </script>
 

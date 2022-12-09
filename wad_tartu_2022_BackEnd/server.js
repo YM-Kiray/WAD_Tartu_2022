@@ -2,20 +2,23 @@ const express = require('express');
 const pool = require('./database');
 const cors = require('cors')
 const port = process.env.PORT || 3000;
-const bcrypt = require('bcrypt');
-const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
+// const bcrypt = require('bcrypt');
+// const cookieParser = require('cookie-parser');
+// const jwt = require('jsonwebtoken');
 
-const secret = "gdgdhdbcb770785rgdzqws"; // use a stronger secret
-const maxAge = 60 * 60; //unlike cookies, the expiresIn in jwt token is calculated by seconds not milliseconds
+// const secret = "gdgdhdbcb770785rgdzqws"; // use a stronger secret
+// const maxAge = 60 * 60; //unlike cookies, the expiresIn in jwt token is calculated by seconds not milliseconds
 
+/*
 const generateJWT = (id) => {
     return jwt.sign({ id }, secret, { expiresIn: maxAge })
         //jwt.sign(payload, secret, [options, callback]), and it returns the JWT as string
 }
+*/
 
 const app = express();
-
+app.use(cors());
+/*
 function validate(password){
     let regex1 = /[A-Z]/
     let regex21 = /[A-Z]+/
@@ -40,36 +43,38 @@ function validateEmail(email) {
     const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return res.test(String(email).toLowerCase());
 }
+*/
 
 
-app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 // We need to include "credentials: true" to allow cookies to be represented  
 // Also "credentials: 'include'" need to be added in Fetch API in the Vue.js App
 
 app.use(express.json()); // Parses incoming requests with JSON payloads and is based on body-parser.
-app.use(cookieParser()); // Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
-
+// app.use(cookieParser()); // Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
 
 
 // Home page: get all posts
-app.get('/posts', async(req, res) => {
+app.get('/api/posts', async(req, res) => {
     try {
         console.log("GET all posts");
         const posts = await pool.query(
-            "SELECT * FROM post_table"
+            "SELECT * FROM posttable"
         );
+        console.log("Query hecha");
         res.json(posts.rows);
+        console.log("posts transformados en JSON");
     } catch (err) {
+        console.log("Hubo error al pillar posts");
         console.error(err.message);
     }
 }); 
 
 // Home page: delete all posts
-app.delete('/posts', async(req, res) => {
+app.delete('/api/posts', async(req, res) => {
     try{
         console.log("DELETE all posts");
         const deletepost = await pool.query(
-            "DELETE * FROM posttable"
+            "TRUNCATE posttable"
         );
         res.json(deletepost);
     }
@@ -79,7 +84,7 @@ app.delete('/posts', async(req, res) => {
 });
 
 // Add post: add
-app.post('/posts', async(req, res) => {
+app.post('/api/posts', async(req, res) => {
     try{
         console.log("POST a post");
         const newpost= await pool.query(
@@ -138,6 +143,7 @@ app.delete('/posts/:id', async(req, res) => {
     }
 });
 
+/*
 // is used to check whether a user is authinticated
 app.get('/auth/authenticate', async(req, res) => {
     console.log('authentication request has been arrived');
@@ -200,14 +206,16 @@ app.post('/auth/signup', async(req, res) => {
         res.status(400).json({error: err.message});
     }
 });
+*/
 
+/*
 app.post('/auth/login', async(req, res) => {
     try {
         console.log("a login request has arrived");
         const { email, password } = req.body;
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
         if (user.rows.length === 0) return res.status(401).json({ error: "User is not registered" });
-
+*/
         /* 
         To authenticate users, you will need to compare the password they provide with the one in the database. 
         bcrypt.compare() accepts the plain text password and the hash that you stored, along with a callback function. 
@@ -218,6 +226,7 @@ app.post('/auth/login', async(req, res) => {
         If both are equal then it returns true else returns false.
         */
 
+        /*
         //Checking if the password is correct
         console.log(user)
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
@@ -242,6 +251,7 @@ app.get('/auth/logout', (req, res) => {
     console.log('delete jwt request arrived');
     res.status(202).clearCookie('jwt').json({ "Msg": "cookie cleared" }).send
 });
+*/
 
 app.listen(port, () => {
     console.log("Server is listening to port" + port)

@@ -1,10 +1,9 @@
 <template>
-    <a class="link" href="'/posts/'+{{id}}">
+    <a class="link" :href="('/posts/'+ this.id)">
     <article class="contentBlock">
-        <div>
+        <div id="fecha">
             <!--<img :src="require('@/assets/images/' + authorImg)">-->
-            <img id="profile-pic" src="../assets/images/me.png"/>
-            <span>{{ author }}</span>
+            <!-- <img id="profile-pic" src="../assets/images/me.png"/>-->
             {{ formatDate(createTime) }}
         </div>
         <!--<div>
@@ -14,42 +13,36 @@
             <p>{{ postText }}</p>
         </div>
 
+        <!--
         <div class="likeBlock">
             <p>{{likes + " likes"}}</p>
             <img :src=image class="imgLike" v-on:click="like">
         </div>
+        -->
     </article>
 
 </a>
 </template>
 <script>
 
-import store from "@/store"
-import image from "../assets/images/sealOfApproval.jpg"
+// import store from "@/store"
+// import image from "../assets/images/sealOfApproval.jpg"
 
 export default { 
     name:"MessageCompo",
     props: {
         id: Number,
-        likes: Number,
-        createTime: Number, 
-        imgID: String, 
-        postText: String, 
-        author: String, 
-        imgAlt: String
+        createTime: String, 
+        postText: String
     },
     data: function(){
         return {
-            image: image
         }
     },
     methods:{
         formatDate() {
             let createTime = new Date(this.createTime)
             return (createTime.getMonth() + "/" + createTime.getDate() + "/" + createTime.getFullYear())
-        },
-        like() {
-            store.dispatch('like', {postId: this.id})
         }
     }
 
@@ -57,7 +50,6 @@ export default {
 </script>
 
 <style>
-
 .contentBlock{
   background-color: lightgray;
   border-radius: 1em;
@@ -98,19 +90,24 @@ export default {
   max-height: 450px;
 }
 
+/*
 .likeBlock{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
 }
+*/
 
 .text{
     display: flex;
-    padding: 0px 10px;
-    margin: 0px 0px 5px 0px;
+    padding: 10px 10px 0px 10px;
+    margin: 10px 0px 0px 0px;
     justify-content:flex-start;
     text-align:left;
 }
 
+#fecha{
+    float: right;
+}
 </style>

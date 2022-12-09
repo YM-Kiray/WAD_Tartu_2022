@@ -5,16 +5,10 @@
           <main>
             <button class = "button" v-on:click="Logout">Logout</button>
 
-            <MessageCompo v-for="item in postList"
-                :key="item.id"
-                :id="item.id" 
-                :likes="item.likes"
-                :createTime="item.createTime" 
-                :imgID="item.imgID" 
-                :postText="item.postText"
-                :author="item.author"
-                :imgAlt="item.imgAlt"/>
-
+              <MessageCompo v-for="item in this.posts"
+                :key="item.id" :id="item.id" :postText="item.postText"
+                :createTime="item.createTime"/>
+            
             <div id="botones">
               <button class = "button" v-on:click="addPost">Add Post</button>
               <button class = "button" v-on:click="deleteAll">Delete All</button>
@@ -25,8 +19,6 @@
         </div>
     </div>
 </template>
-
-
 
 
 <script>
@@ -42,34 +34,11 @@ export default {
   },
   data: function(){
     return {
-      items: [
-        {id:1,
-        createTime:1234567890123,
-        imgID:"sealOfApproval.jpg",
-        postText:"Hello World",
-        author:"Mr Happy",
-        imgAlt:"Gdsdfs"},
-        {id:1,
-        createTime:1234567890123,
-        imgID:"sealOfApproval.jpg",
-        postText:"Hello World",
-        author:"Mr Happy",
-        imgAlt:"Gdsdfs"},
-        {id:1,
-        createTime:1234567890123,
-        imgID:"sealOfApproval.jpg",
-        postText:"Hello World",
-        author:"Mr Happy",
-        imgAlt:"Gdsdfs"}
-      ]
+      posts: []
     }
   },
-  computed: {
-      postList(){
-          return this.$store.getters.getPostList
-      }
-  },
   methods: {
+    /*
     Logout() {
       fetch("http://localhost:3000/auth/logout", {
           credentials: 'include', //  Don't forget to specify this if you need cookies
@@ -86,21 +55,48 @@ export default {
         console.log(e);
         console.log("error logout");
       });
+    },*/
+
+    fetchPosts() {
+      // You should remember how Fetch API works
+      // fetch is a GET request unless stated otherwise. Therefore, it will fetch all posts from the database
+      
+      console.log("fetching...")
+      fetch(`http://localhost:3000/api/posts/`)
+        .then((response) => response.json())
+        .then((data) => (this.posts = data))
+        .catch((err) => console.log(err.message));
+
+        console.log("fetchiado")
     },
 
+    
     resetLikes(){
       store.dispatch("resetLikes")
     },
     deleteAll(){
-      store.dispatch("deleteAll")
+      fetch(`http://localhost:3000/api/posts/`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" }
+      }).then((response) => {
+          console.log(response.data);
+          console.log("eliminado");
+          // We are using the router instance of this element to navigate to a different URL location
+          this.$router.go();
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
     addPost(){
       router.push("/addPost")
-    },
-    logout(){
-      store.dispatch("logout")
     }
-  }
+  },
+  mounted() {
+    // call fetchPosts() when this element (AllPosts) mounts 
+    this.fetchPosts();
+    console.log("mounted");
+  },
 }
 </script>
 

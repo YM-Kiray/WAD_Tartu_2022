@@ -5,7 +5,7 @@ import LoginPage from "../views/Login.vue";
 import AddPost from "../views/AddPost.vue";
 import SinglePost from "../views/Post.vue";
 import ContactUsPage from "../views/ContactUs.vue";
-import auth from "../auth";
+// import auth from "../auth";
 
 
 
@@ -29,7 +29,8 @@ const routes = [{
     {
         path: "/",
         name: "MainPage", 
-        component: MainPage,
+        component: MainPage
+        /*
         beforeEnter: async(to, from, next) => {
             let authResult = await auth.authenticated();
             if (!authResult) {
@@ -38,6 +39,7 @@ const routes = [{
                 next();
             }
         }
+        */
     },
     {
         path: "/addPost",

@@ -47,6 +47,7 @@ export default {
     
 
     methods:{
+        /*
         LogIn() {
       var data = {
         email: this.email,
@@ -100,6 +101,7 @@ export default {
                 this.password = "";
             }  
          }
+         */
     }
 }
 </script>

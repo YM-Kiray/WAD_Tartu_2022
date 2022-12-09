@@ -16,7 +16,7 @@
                     </div>
                     -->
                     <div class="add">
-                        <button>Add</button>
+                        <button @click="addPost">Add</button>
                     </div>
                 </form>
             </div>
@@ -34,6 +34,31 @@ export default {
             body:""
         }
     },
+    methods:{
+        addPost(){
+            console.log("0");
+            var data = {
+                body: this.body
+            };
+            console.log("1");
+            fetch("http://localhost:3000/api/posts", {
+                method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        }).then((response) => {
+        console.log(response.data);
+        // redirect to /allposts view
+        this.$router.push("/api/posts");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("error");
+      });
+      console.log("2");
+        }
+    }
 }
 </script>
 

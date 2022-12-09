@@ -41,7 +41,7 @@ export default {
         }
     },
     methods:{
-
+/*
         SignUp() {
       var data = {
         email: this.email,
@@ -95,6 +95,7 @@ export default {
                 this.password = "";
             }  
          }
+         */
     }
 }
 </script>

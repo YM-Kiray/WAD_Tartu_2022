@@ -32,8 +32,6 @@ const createTblQuery = `
 
     CREATE TABLE IF NOT EXISTS "posttable" (
 	    "id" SERIAL PRIMARY KEY,         
-	    "likes" VARCHAR(200) NOT NULL,
-	    "author" SERIAL NOT NULL REFERENCES users (id),
         "postText" VARCHAR(200) NOT NULL,
         "createTime"  timestamp default current_timestamp
     );
@@ -41,7 +39,7 @@ const createTblQuery = `
 // A function to execute the previous query   
 execute(createTblQuery).then(result => {
     if (result) {
-        console.log('If does not exists, create the "posttable" table');
+        console.log('If does not exists, create OUR "posttable" table');
     }
 });
 
