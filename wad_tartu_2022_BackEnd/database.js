@@ -32,8 +32,8 @@ const createTblQuery = `
 
     CREATE TABLE IF NOT EXISTS "posttable" (
 	    "id" SERIAL PRIMARY KEY,         
-        "postText" VARCHAR(200) NOT NULL,
-        "createTime"  timestamp default current_timestamp
+        "text" VARCHAR(200) NOT NULL,
+        "date"  timestamp default current_timestamp
     );
     `;
 // A function to execute the previous query   

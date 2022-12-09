@@ -6,8 +6,8 @@
                     <div class="atts">
                         <div>Add Post</div>
                         <div class="attribute">
-                            <label for="body">Body</label>
-                            <input type="text" id="body" placeholder="Body" required v-model="body"/>
+                            <label for="text">Body</label>
+                            <input type="text" id="text" placeholder="Body" required v-model="text"/>
                         </div>
                     </div>
                     <!--
@@ -31,32 +31,30 @@ export default {
     props:{},
     data:()=>{
         return{
-            body:""
+            text:""
         }
     },
     methods:{
         addPost(){
-            console.log("0");
             var data = {
-                body: this.body
+                body: this.text
             };
-            console.log("1");
             fetch("http://localhost:3000/api/posts", {
                 method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        }).then((response) => {
-        console.log(response.data);
-        // redirect to /allposts view
-        this.$router.push("/api/posts");
-      })
-      .catch((e) => {
-        console.log(e);
-        console.log("error");
-      });
-      console.log("2");
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+            )
+            .then((response) => {
+                console.log(response.data);
+                this.$router.push("/posts");
+            })
+            .catch((e) => {
+                console.log(e);
+                console.log("error");
+            });
         }
     }
 }

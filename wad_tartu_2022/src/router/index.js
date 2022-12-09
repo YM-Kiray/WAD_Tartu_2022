@@ -27,7 +27,7 @@ const routes = [{
 
     },
     {
-        path: "/",
+        path: "/posts",
         name: "MainPage", 
         component: MainPage
         /*
@@ -47,7 +47,7 @@ const routes = [{
         component: AddPost
     },
     {
-        path: "/post",
+        path: "/posts/:id",
         name: "SinglePost", 
         component: SinglePost
     }

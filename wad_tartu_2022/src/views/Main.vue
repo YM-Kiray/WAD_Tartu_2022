@@ -4,10 +4,10 @@
           <aside class="grayBlock"/>
           <main>
             <button class = "button" v-on:click="Logout">Logout</button>
-
+        
               <MessageCompo v-for="item in this.posts"
-                :key="item.id" :id="item.id" :postText="item.postText"
-                :createTime="item.createTime"/>
+                :key="item.id" :id="item.id" :text="item.text"
+                :date="item.date"/>
             
             <div id="botones">
               <button class = "button" v-on:click="addPost">Add Post</button>
@@ -23,9 +23,7 @@
 
 <script>
 import MessageCompo from './../components/Message.vue'
-import store from './../store'
 import router from '@/router'
-
 
 export default {
   name: 'MainPage',
@@ -58,45 +56,35 @@ export default {
     },*/
 
     fetchPosts() {
-      // You should remember how Fetch API works
-      // fetch is a GET request unless stated otherwise. Therefore, it will fetch all posts from the database
-      
-      console.log("fetching...")
       fetch(`http://localhost:3000/api/posts/`)
         .then((response) => response.json())
         .then((data) => (this.posts = data))
         .catch((err) => console.log(err.message));
-
-        console.log("fetchiado")
-    },
-
-    
-    resetLikes(){
-      store.dispatch("resetLikes")
     },
     deleteAll(){
-      fetch(`http://localhost:3000/api/posts/`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" }
-      }).then((response) => {
+      fetch(`http://localhost:3000/api/posts/`, 
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" }
+        }
+      )
+      .then((response) => {
           console.log(response.data);
-          console.log("eliminado");
-          // We are using the router instance of this element to navigate to a different URL location
           this.$router.go();
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+        }
+      )
+      .catch((e) => {
+        console.log(e);
+        }
+      );
     },
     addPost(){
       router.push("/addPost")
     }
   },
   mounted() {
-    // call fetchPosts() when this element (AllPosts) mounts 
     this.fetchPosts();
-    console.log("mounted");
-  },
+  }
 }
 </script>
 

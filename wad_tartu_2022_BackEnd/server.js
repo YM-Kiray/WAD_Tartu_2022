@@ -56,15 +56,11 @@ app.use(express.json()); // Parses incoming requests with JSON payloads and is b
 // Home page: get all posts
 app.get('/api/posts', async(req, res) => {
     try {
-        console.log("GET all posts");
         const posts = await pool.query(
             "SELECT * FROM posttable"
         );
-        console.log("Query hecha");
         res.json(posts.rows);
-        console.log("posts transformados en JSON");
     } catch (err) {
-        console.log("Hubo error al pillar posts");
         console.error(err.message);
     }
 }); 
@@ -72,7 +68,6 @@ app.get('/api/posts', async(req, res) => {
 // Home page: delete all posts
 app.delete('/api/posts', async(req, res) => {
     try{
-        console.log("DELETE all posts");
         const deletepost = await pool.query(
             "TRUNCATE posttable"
         );
@@ -86,9 +81,9 @@ app.delete('/api/posts', async(req, res) => {
 // Add post: add
 app.post('/api/posts', async(req, res) => {
     try{
-        console.log("POST a post");
+        const text = req.body;
         const newpost= await pool.query(
-            "INSERT INTO posttable(body) values ($1) RETURNING*", [post.body]
+            "INSERT INTO posttable(text) values ($1) RETURNING*", [text.body]
         )
         res.json(newpost);
     }
@@ -98,13 +93,12 @@ app.post('/api/posts', async(req, res) => {
 });
 
 // A post: put
-app.put('/posts/:id', async(req, res) => {
+app.put('/api/posts/:id', async(req, res) => {
     try{
-        console.log("PUT a post");
         const {id} = req.params;
         const post = req.body;
         const updatepost = await pool.query(
-            "UPDATE posttable SET (body) = ($2) WHERE id = $1", [id, post.body]
+            "UPDATE posttable SET text = $2 WHERE id = $1", [id, post.text]
         )
         res.json(updatepost);
     }
@@ -114,9 +108,8 @@ app.put('/posts/:id', async(req, res) => {
 });
 
 // A post: get
-app.get('/posts/:id', async(req, res) => {
+app.get('/api/posts/:id', async(req, res) => {
     try{
-        console.log("GET a post");
         const {id} = req.params;
         const posts = await pool.query(
             "SELECT * FROM posttable WHERE id = $1", [id]
@@ -129,9 +122,8 @@ app.get('/posts/:id', async(req, res) => {
 });
 
 // A post: delete
-app.delete('/posts/:id', async(req, res) => {
+app.delete('/api/posts/:id', async(req, res) => {
     try{
-        console.log("DELETE a post");
         const {id} = req.params;
         const deletepost = await pool.query(
             "DELETE FROM posttable WHERE id = $1", [id]

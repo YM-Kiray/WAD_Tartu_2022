@@ -1,16 +1,17 @@
 <template>
-    <a class="link" :href="('/posts/'+ this.id)">
+    <router-link class="link" :to="'/posts/' + this.id">
     <article class="contentBlock">
+        
         <div id="fecha">
             <!--<img :src="require('@/assets/images/' + authorImg)">-->
             <!-- <img id="profile-pic" src="../assets/images/me.png"/>-->
-            {{ formatDate(createTime) }}
+            {{ formatDate(date) }}
         </div>
         <!--<div>
             <img v-if = "imgID !== ''" :src="require('@/assets/images/postImg/' + imgID)" class="imgPost" :alt="imgAlt">
         </div>-->  
         <div class="text">
-            <p>{{ postText }}</p>
+            <p>{{ text }}</p>
         </div>
 
         <!--
@@ -19,10 +20,13 @@
             <img :src=image class="imgLike" v-on:click="like">
         </div>
         -->
+    
     </article>
 
-</a>
+</router-link>
 </template>
+
+
 <script>
 
 // import store from "@/store"
@@ -32,8 +36,8 @@ export default {
     name:"MessageCompo",
     props: {
         id: Number,
-        createTime: String, 
-        postText: String
+        date: String, 
+        text: String
     },
     data: function(){
         return {
@@ -41,8 +45,8 @@ export default {
     },
     methods:{
         formatDate() {
-            let createTime = new Date(this.createTime)
-            return (createTime.getMonth() + "/" + createTime.getDate() + "/" + createTime.getFullYear())
+            let date = new Date(this.date)
+            return (date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear())
         }
     }
 

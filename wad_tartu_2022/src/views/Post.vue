@@ -6,8 +6,8 @@
                     <div class="atts">
                         <div>A Post</div>
                         <div class="attribute">
-                            <label for="body">Body</label>
-                            <input type="text" id="body" placeholder="Body" required v-model="body"/>
+                            <label for="text">Body</label>
+                            <input type="text" id="text" placeholder="Body" required v-model="this.post.text"/>
                         </div>
                     </div>
                     <!--
@@ -17,10 +17,10 @@
                     -->
                     <div class="buttons">
                         <div class="btn">
-                            <button>Update</button>
+                            <button @click="updatePost">Update</button>
                         </div>
                         <div class="btn">
-                            <button>Delete</button>
+                            <button @click="deletePost">Delete</button>
                         </div>
                     </div>
                 </form>
@@ -36,31 +36,79 @@ export default {
     props:{},
     data:()=>{
         return{
-            id:"",
-            body:"",
-            date:""
-        }
+            post: {
+                id:"",
+                text:"",
+                date:""
+            }
+        };
     },
 
     methods: {
     fetchAPost(id) {
-      // fetch one post with the specied id (id)
-      fetch(`http://localhost:3000/posts/${id}`)
+      fetch(`http://localhost:3000/api/posts/${id}`)
         .then((response) => response.json())
-        .then((data) => {
-            this.post.id = data.id;
-            this.body = data.postText;
-            this.date = data.createTime}
-        )
+        .then((data) => {this.post = data; console.log("Imprimo post body:\n" + this.post.text)})
         .catch((err) => console.log(err.message));
     },
+    updatePost(){
+        console.log("pido update");
+        console.log("Imprimo post body:\n" + this.post.text)
+        fetch(`http://localhost:3000/api/posts/${this.post.id}`,
+        {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(this.post),
+        }
+        )
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push("/posts");
+        }
+        )
+        .catch((e) => {
+          console.log(e);
+        }
+        );
+    },
+    deletePost(){
+        fetch(`http://localhost:3000/api/posts/${this.post.id}`,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+        )
+        .then((response) => {
+          console.log(response.data);
+          //this.$router.push("/apost/" + this.post.id);
+          // We are using the router instance of this element to navigate to a different URL location
+          this.$router.push("/posts");
+        }
+        )
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+
+
+
+
+
+
+
 },
     mounted() {
     // call fetchAPost() when this element mounts, and pass to it a route parameter  (id)
     // Route parameters (this.$route.params.id) are named URL segments that are used to capture the values specified at their 
     // position in the URL. The captured values are populated in the req.params object, with the name 
     // of the route parameter specified in the path as their respective keys
+    console.log(this.$route.params.id);
     this.fetchAPost(this.$route.params.id);
+    
   },
 }
 </script>
