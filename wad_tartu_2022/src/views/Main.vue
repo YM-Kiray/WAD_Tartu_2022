@@ -3,7 +3,7 @@
         <div id = "main">
           <aside class="grayBlock"/>
           <main>
-            <button class = "button" v-on:click="Logout">Logout</button>
+            <button class = "top-button" v-on:click="Logout">Logout</button>
         
               <MessageCompo v-for="item in this.posts"
                 :key="item.id" :id="item.id" :text="item.text"
@@ -12,7 +12,6 @@
             <div id="botones">
               <button class = "button" v-on:click="addPost">Add Post</button>
               <button class = "button" v-on:click="deleteAll">Delete All</button>
-              <button class = "button" v-on:click="resetLikes">Reset Likes</button>
             </div>
           </main>
           <aside class="grayBlock"/>
@@ -119,6 +118,15 @@ export default {
   width: 15%;
 }
 
+.top-button{
+  border: 0px solid;
+        border-radius: 8px;
+        background-color: rgb(139, 180, 221);
+        padding: 4px 15px;
+        font-size:14px;
+        margin-bottom: 10px;
+}
+
 .button{
         border: 0px solid;
         border-radius: 8px;
@@ -135,6 +143,7 @@ export default {
       display:flex;
       gap: 30px;
       justify-content: center;
+      margin-top: 10px;
     }
 
 </style>
