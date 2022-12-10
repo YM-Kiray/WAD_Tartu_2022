@@ -35,7 +35,7 @@ export default {
     }
   },
   methods: {
-    /*
+  
     Logout() {
       fetch("http://localhost:3000/auth/logout", {
           credentials: 'include', //  Don't forget to specify this if you need cookies
@@ -52,7 +52,7 @@ export default {
         console.log(e);
         console.log("error logout");
       });
-    },*/
+    },
 
     fetchPosts() {
       fetch(`http://localhost:3000/api/posts/`)

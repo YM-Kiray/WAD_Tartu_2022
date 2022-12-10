@@ -42,12 +42,28 @@ const routes = [{
     {
         path: "/addPost",
         name: "AddPost", 
-        component: AddPost
+        component: AddPost,
+        beforeEnter: async(to, from, next) => {
+            let authResult = await auth.authenticated();
+            if (!authResult) {
+                next('/login')
+            } else {
+                next();
+            }
+        }
     },
     {
         path: "/posts/:id",
         name: "SinglePost", 
-        component: SinglePost
+        component: SinglePost,
+        beforeEnter: async(to, from, next) => {
+            let authResult = await auth.authenticated();
+            if (!authResult) {
+                next('/login')
+            } else {
+                next();
+            }
+        }
     }
 
     //, path:"/main", name_ "main", component: HomePage

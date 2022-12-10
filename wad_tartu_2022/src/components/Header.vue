@@ -3,7 +3,7 @@
         <h1>Header Component</h1>
         <router-view>
         <nav>
-            <router-link to="/posts">Main</router-link> |
+            <router-link to="/">Main</router-link> |
             <router-link to="/login">Login Page</router-link> |
             <router-link to="/contactUs">Contact Us</router-link>
         </nav>

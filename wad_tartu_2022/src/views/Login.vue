@@ -10,7 +10,7 @@
                         </div>
                         <div class="attribute">
                             <label for="password">Password</label>
-                            <input type="text" id="password" placeholder="Password" required v-model="password"/>
+                            <input type="password" id="password" placeholder="Password" required v-model="password"/>
                         </div>
                     </div>
                     <div v-if="error" class="error">
@@ -47,8 +47,8 @@ export default {
     
 
     methods:{
-        /*
-        LogIn() {
+        
+    LogIn() {
       var data = {
         email: this.email,
         password: this.password
@@ -101,7 +101,7 @@ export default {
                 this.password = "";
             }  
          }
-         */
+         
     }
 }
 </script>

@@ -1,4 +1,4 @@
-/*export default {
+export default {
     user: { authenticated: false },
     authenticated: async function() {
         await fetch("http://localhost:3000/auth/authenticate", {
@@ -15,4 +15,4 @@
             });
         return this.user.authenticated;
     }
-}*/
+}

@@ -1,24 +1,22 @@
 const express = require('express');
 const pool = require('./database');
 const cors = require('cors')
+console.log(cors())
 const port = process.env.PORT || 3000;
-// const bcrypt = require('bcrypt');
-// const cookieParser = require('cookie-parser');
-// const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
-// const secret = "gdgdhdbcb770785rgdzqws"; // use a stronger secret
-// const maxAge = 60 * 60; //unlike cookies, the expiresIn in jwt token is calculated by seconds not milliseconds
+const secret = "BIk+*kCc{(7go+uB3n%9${=*&9xterLWQI[1:A4L}{CObn)J&'Y%{5pvTg=E#Vu"; // use a stronger secret
+const maxAge = 60 * 60; //unlike cookies, the expiresIn in jwt token is calculated by seconds not milliseconds
 
-/*
 const generateJWT = (id) => {
     return jwt.sign({ id }, secret, { expiresIn: maxAge })
-        //jwt.sign(payload, secret, [options, callback]), and it returns the JWT as string
 }
-*/
 
 const app = express();
-app.use(cors());
-/*
+//app.use(cors());
+app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 function validate(password){
     let regex1 = /[A-Z]/
     let regex21 = /[A-Z]+/
@@ -43,14 +41,13 @@ function validateEmail(email) {
     const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return res.test(String(email).toLowerCase());
 }
-*/
 
 
 // We need to include "credentials: true" to allow cookies to be represented  
 // Also "credentials: 'include'" need to be added in Fetch API in the Vue.js App
 
 app.use(express.json()); // Parses incoming requests with JSON payloads and is based on body-parser.
-// app.use(cookieParser()); // Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
+app.use(cookieParser()); // Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
 
 
 // Home page: get all posts
@@ -135,7 +132,6 @@ app.delete('/api/posts/:id', async(req, res) => {
     }
 });
 
-/*
 // is used to check whether a user is authinticated
 app.get('/auth/authenticate', async(req, res) => {
     console.log('authentication request has been arrived');
@@ -198,16 +194,14 @@ app.post('/auth/signup', async(req, res) => {
         res.status(400).json({error: err.message});
     }
 });
-*/
 
-/*
 app.post('/auth/login', async(req, res) => {
     try {
         console.log("a login request has arrived");
         const { email, password } = req.body;
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
         if (user.rows.length === 0) return res.status(401).json({ error: "User is not registered" });
-*/
+
         /* 
         To authenticate users, you will need to compare the password they provide with the one in the database. 
         bcrypt.compare() accepts the plain text password and the hash that you stored, along with a callback function. 
@@ -218,7 +212,7 @@ app.post('/auth/login', async(req, res) => {
         If both are equal then it returns true else returns false.
         */
 
-        /*
+        
         //Checking if the password is correct
         console.log(user)
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
@@ -243,7 +237,7 @@ app.get('/auth/logout', (req, res) => {
     console.log('delete jwt request arrived');
     res.status(202).clearCookie('jwt').json({ "Msg": "cookie cleared" }).send
 });
-*/
+
 
 app.listen(port, () => {
     console.log("Server is listening to port" + port)

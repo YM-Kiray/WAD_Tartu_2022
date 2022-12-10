@@ -49,7 +49,7 @@ export default {
             )
             .then((response) => {
                 console.log(response.data);
-                this.$router.push("/posts");
+                this.$router.push("/");
             })
             .catch((e) => {
                 console.log(e);
