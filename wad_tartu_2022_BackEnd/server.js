@@ -157,7 +157,6 @@ app.get('/auth/authenticate', async(req, res) => {
             res.json({ "authenticated": authenticated }); // authenticated = false
         }
     } catch (err) {
-        console.error(err.message);
         res.status(400).send(err.message);
     }
 });
@@ -214,7 +213,7 @@ app.post('/auth/login', async(req, res) => {
 
         
         //Checking if the password is correct
-        console.log(user)
+        //console.log(user)
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         //console.log("validPassword:" + validPassword);
         if (validPassword){
@@ -223,9 +222,10 @@ app.post('/auth/login', async(req, res) => {
             .status(201)
             .cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
             .json({ user_id: user.rows[0].id });
-        }     
-        return res.status(401).json({ error: "Incorrect password" });
-
+        }
+        else{
+            res.status(401).json({ error: "Incorrect password" });
+        }
         
     } catch (error) {
         res.status(401).json({ error: error.message });
