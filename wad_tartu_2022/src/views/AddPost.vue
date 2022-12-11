@@ -16,7 +16,7 @@
                     </div>
                     -->
                     <div class="add">
-                        <button @click="addPost">Add</button>
+                        <button type="button" @click="addPost">Add</button>
                     </div>
                 </form>
             </div>

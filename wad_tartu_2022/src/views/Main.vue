@@ -22,7 +22,7 @@
 
 <script>
 import MessageCompo from './../components/Message.vue'
-import router from '@/router'
+//import router from '@/router'
 
 export default {
   name: 'MainPage',
@@ -78,7 +78,7 @@ export default {
       );
     },
     addPost(){
-      router.push("/addPost")
+      this.$router.push("/addPost")
     }
   },
   mounted() {

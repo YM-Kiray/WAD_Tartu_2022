@@ -17,10 +17,10 @@
                     -->
                     <div class="buttons">
                         <div class="btn">
-                            <button @click="updatePost">Update</button>
+                            <button type="button" @click="updatePost">Update</button>
                         </div>
                         <div class="btn">
-                            <button @click="deletePost">Delete</button>
+                            <button type="button" @click="deletePost">Delete</button>
                         </div>
                     </div>
                 </form>
